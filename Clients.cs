@@ -47,7 +47,6 @@ namespace CRUD
             txbEmail.Text = client.Email;
             txbAddress.Text = client.Address;
             dtpBirthDate.Value = client.BirthDate.ToUniversalTime();
-            txbRegisterDate.Text = client.RegisterDate.ToUniversalTime().ToString();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)

@@ -49,6 +49,14 @@ namespace CRUD
             this.btnSearch = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.btnInsert = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.client_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.client_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.client_Phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.client_Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.client_Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.client_BirthDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -248,11 +256,66 @@ namespace CRUD
             this.btnInsert.UseVisualStyleBackColor = true;
             this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.client_Id,
+            this.client_Name,
+            this.client_Phone,
+            this.client_Email,
+            this.client_Address,
+            this.client_BirthDate});
+            this.dataGridView1.Location = new System.Drawing.Point(12, 168);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.Size = new System.Drawing.Size(746, 242);
+            this.dataGridView1.TabIndex = 20;
+            // 
+            // client_Id
+            // 
+            this.client_Id.HeaderText = "Id";
+            this.client_Id.Name = "client_Id";
+            this.client_Id.ReadOnly = true;
+            this.client_Id.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.client_Id.Width = 35;
+            // 
+            // client_Name
+            // 
+            this.client_Name.HeaderText = "Name";
+            this.client_Name.Name = "client_Name";
+            this.client_Name.Width = 175;
+            // 
+            // client_Phone
+            // 
+            this.client_Phone.HeaderText = "Phone";
+            this.client_Phone.Name = "client_Phone";
+            this.client_Phone.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // client_Email
+            // 
+            this.client_Email.HeaderText = "Email";
+            this.client_Email.Name = "client_Email";
+            this.client_Email.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.client_Email.Width = 160;
+            // 
+            // client_Address
+            // 
+            this.client_Address.HeaderText = "Address";
+            this.client_Address.Name = "client_Address";
+            this.client_Address.Width = 170;
+            // 
+            // client_BirthDate
+            // 
+            this.client_BirthDate.HeaderText = "Birth Date";
+            this.client_BirthDate.Name = "client_BirthDate";
+            // 
             // Clients
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(772, 450);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnInsert);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.btnSearch);
@@ -276,6 +339,7 @@ namespace CRUD
             this.Name = "Clients";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Clients";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -303,5 +367,12 @@ namespace CRUD
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnInsert;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn client_Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn client_Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn client_Phone;
+        private System.Windows.Forms.DataGridViewTextBoxColumn client_Email;
+        private System.Windows.Forms.DataGridViewTextBoxColumn client_Address;
+        private System.Windows.Forms.DataGridViewTextBoxColumn client_BirthDate;
     }
 }
