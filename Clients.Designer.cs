@@ -49,14 +49,16 @@ namespace CRUD
             this.btnSearch = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.btnInsert = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dtgClients = new System.Windows.Forms.DataGridView();
             this.client_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.client_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.client_Phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.client_Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.client_Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.client_BirthDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.client_registerDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnCancel = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgClients)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -71,10 +73,13 @@ namespace CRUD
             // 
             // txbId
             // 
+            this.txbId.Enabled = false;
             this.txbId.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbId.Location = new System.Drawing.Point(12, 70);
+            this.txbId.MaxLength = 3;
             this.txbId.Name = "txbId";
-            this.txbId.Size = new System.Drawing.Size(48, 27);
+            this.txbId.ReadOnly = true;
+            this.txbId.Size = new System.Drawing.Size(33, 27);
             this.txbId.TabIndex = 1;
             // 
             // txbName
@@ -83,7 +88,7 @@ namespace CRUD
             this.txbName.Location = new System.Drawing.Point(80, 70);
             this.txbName.MaxLength = 80;
             this.txbName.Name = "txbName";
-            this.txbName.Size = new System.Drawing.Size(334, 27);
+            this.txbName.Size = new System.Drawing.Size(477, 27);
             this.txbName.TabIndex = 2;
             // 
             // label2
@@ -121,7 +126,7 @@ namespace CRUD
             this.txbAddress.Location = new System.Drawing.Point(389, 126);
             this.txbAddress.MaxLength = 80;
             this.txbAddress.Name = "txbAddress";
-            this.txbAddress.Size = new System.Drawing.Size(370, 27);
+            this.txbAddress.Size = new System.Drawing.Size(435, 27);
             this.txbAddress.TabIndex = 6;
             // 
             // label4
@@ -137,7 +142,7 @@ namespace CRUD
             // mtxbPhone
             // 
             this.mtxbPhone.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mtxbPhone.Location = new System.Drawing.Point(437, 70);
+            this.mtxbPhone.Location = new System.Drawing.Point(581, 70);
             this.mtxbPhone.Mask = "(##) #####-####";
             this.mtxbPhone.Name = "mtxbPhone";
             this.mtxbPhone.Size = new System.Drawing.Size(120, 27);
@@ -148,7 +153,7 @@ namespace CRUD
             this.dtpBirthDate.CalendarFont = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpBirthDate.CustomFormat = "yyyy/MM/dd";
             this.dtpBirthDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpBirthDate.Location = new System.Drawing.Point(594, 71);
+            this.dtpBirthDate.Location = new System.Drawing.Point(738, 71);
             this.dtpBirthDate.Name = "dtpBirthDate";
             this.dtpBirthDate.Size = new System.Drawing.Size(86, 20);
             this.dtpBirthDate.TabIndex = 4;
@@ -157,7 +162,7 @@ namespace CRUD
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(433, 48);
+            this.label5.Location = new System.Drawing.Point(577, 48);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(53, 19);
             this.label5.TabIndex = 10;
@@ -167,7 +172,7 @@ namespace CRUD
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(590, 48);
+            this.label6.Location = new System.Drawing.Point(734, 48);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(79, 19);
             this.label6.TabIndex = 11;
@@ -182,6 +187,7 @@ namespace CRUD
             this.btnNew.TabIndex = 12;
             this.btnNew.Text = "New";
             this.btnNew.UseVisualStyleBackColor = true;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // btnUpdate
             // 
@@ -214,11 +220,12 @@ namespace CRUD
             this.btnSave.TabIndex = 15;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // txbSearch
             // 
             this.txbSearch.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbSearch.Location = new System.Drawing.Point(577, 7);
+            this.txbSearch.Location = new System.Drawing.Point(696, 7);
             this.txbSearch.MaxLength = 80;
             this.txbSearch.Name = "txbSearch";
             this.txbSearch.Size = new System.Drawing.Size(57, 27);
@@ -227,7 +234,7 @@ namespace CRUD
             // btnSearch
             // 
             this.btnSearch.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.Location = new System.Drawing.Point(640, 7);
+            this.btnSearch.Location = new System.Drawing.Point(759, 7);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(65, 27);
             this.btnSearch.TabIndex = 17;
@@ -239,7 +246,7 @@ namespace CRUD
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(478, 10);
+            this.label7.Location = new System.Drawing.Point(597, 10);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(93, 19);
             this.label7.TabIndex = 18;
@@ -256,21 +263,22 @@ namespace CRUD
             this.btnInsert.UseVisualStyleBackColor = true;
             this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
             // 
-            // dataGridView1
+            // dtgClients
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dtgClients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgClients.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.client_Id,
             this.client_Name,
             this.client_Phone,
             this.client_Email,
             this.client_Address,
-            this.client_BirthDate});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 168);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(746, 242);
-            this.dataGridView1.TabIndex = 20;
+            this.client_BirthDate,
+            this.client_registerDate});
+            this.dtgClients.Location = new System.Drawing.Point(12, 196);
+            this.dtgClients.Name = "dtgClients";
+            this.dtgClients.RowHeadersVisible = false;
+            this.dtgClients.Size = new System.Drawing.Size(869, 242);
+            this.dtgClients.TabIndex = 20;
             // 
             // client_Id
             // 
@@ -310,12 +318,32 @@ namespace CRUD
             this.client_BirthDate.HeaderText = "Birth Date";
             this.client_BirthDate.Name = "client_BirthDate";
             // 
+            // client_registerDate
+            // 
+            this.client_registerDate.HeaderText = "Register Date";
+            this.client_registerDate.Name = "client_registerDate";
+            this.client_registerDate.Width = 120;
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Enabled = false;
+            this.btnCancel.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Location = new System.Drawing.Point(12, 159);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(71, 27);
+            this.btnCancel.TabIndex = 21;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Visible = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
             // Clients
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(772, 450);
-            this.Controls.Add(this.dataGridView1);
+            this.ClientSize = new System.Drawing.Size(888, 450);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.dtgClients);
             this.Controls.Add(this.btnInsert);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.btnSearch);
@@ -339,7 +367,8 @@ namespace CRUD
             this.Name = "Clients";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Clients";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.Clients_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dtgClients)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -367,12 +396,14 @@ namespace CRUD
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnInsert;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dtgClients;
+        private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.DataGridViewTextBoxColumn client_Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn client_Name;
         private System.Windows.Forms.DataGridViewTextBoxColumn client_Phone;
         private System.Windows.Forms.DataGridViewTextBoxColumn client_Email;
         private System.Windows.Forms.DataGridViewTextBoxColumn client_Address;
         private System.Windows.Forms.DataGridViewTextBoxColumn client_BirthDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn client_registerDate;
     }
 }

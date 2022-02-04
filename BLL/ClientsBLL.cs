@@ -4,9 +4,9 @@ using CRUD.Models;
 
 namespace CRUD.BLL
 {
-    public class ClientsBLL
+    public static class ClientsBLL
     {
-        public void Insert(ClientInformation client)
+        public static void Insert(ClientInformation client)
         {
             if (client.Name.Trim().Length == 0)
             {
@@ -17,11 +17,10 @@ namespace CRUD.BLL
                 throw new Exception("The client must be 16 or older!");
             }
             client.Email = client.Email.ToLower();
-            ClientsDAL cd = new ClientsDAL();
-            cd.Insert(client);
+            ClientsDAL.Insert(client);
         }
 
-        public void Update(ClientInformation client)
+        public static void Update(ClientInformation client)
         {
             if (client.Name.Trim().Length == 0)
             {
@@ -32,20 +31,29 @@ namespace CRUD.BLL
                 throw new Exception("The client must be 16 or older!");
             }
             client.Email = client.Email.ToLower();
-            ClientsDAL cd = new ClientsDAL();
-            cd.Update(client);
+            ClientsDAL.Update(client);
         }
 
-        public void Delete(int id)
+        public static void Delete(ClientInformation client)
         {
-            ClientsDAL cd = new ClientsDAL();
-            cd.Delete(id);
+            ClientsDAL.Delete(client);
         }
 
-        public ClientInformation Search(int id)
+        public static ClientInformation Search(int id)
         {
-            ClientsDAL cd = new ClientsDAL();
-            return cd.Search(id);
+            if(id > 0)
+            {
+                return ClientsDAL.Search(id);
+            }
+            else
+            {
+                throw new Exception("The Id must be valid");
+            }
+        }
+
+        public static int RegisterCount()
+        {
+            return ClientsDAL.RegisterCount();
         }
     }
 }

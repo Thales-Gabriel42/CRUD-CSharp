@@ -12,6 +12,19 @@ namespace CRUD.Models
         private DateTime birthDate_;
         private DateTime registerDate_;
 
+        public ClientInformation() { }
+
+        public ClientInformation(int id, string name, string phone, string email, string address, DateTime birthDate, DateTime registerDate)
+        {
+            id_ = id;
+            name_ = name;
+            phone_ = phone;
+            email_ = email;
+            address_ = address;
+            birthDate_ = birthDate;
+            registerDate_ = registerDate;
+        }
+
         public int Id
         {
             get { return id_; }
@@ -54,5 +67,22 @@ namespace CRUD.Models
             set { registerDate_ = value; }
         }
 
+        public override string ToString()
+        {
+            return Id.ToString()
+                + ";"
+                + Name
+                + ";"
+                + Phone
+                + ";"
+                + Email 
+                + ";"
+                + Address
+                + ";"
+                + BirthDate.ToString("yyyy-MM-dd")
+                + ";"
+                + RegisterDate.ToString("yyyy-MM-dd HH:mm:ss")
+                +";";
+        }
     }
 }
